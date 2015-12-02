@@ -27,7 +27,7 @@
 						action="category/remove/${category.ID}" methop="POST"
 						modelAttribute="categoryForm">
 						<td><input type="submit" value="Delete"
-							onclick="removeCategory()" /></td>
+							onclick="removeCategory(${category.ID})" /></td>
 					</form:form></td>
 			</tr>
 		</c:forEach>
