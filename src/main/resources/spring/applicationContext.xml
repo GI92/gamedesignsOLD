@@ -1,0 +1,68 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+	 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		 
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- <context:component-scan base-package="com.gamedesignes.rest.*" /> -->
+
+	<import resource="spring-dao.xml" />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="userDAO" class="com.gamedesigns.dao.JpaUserDAO"></bean>
+
+	<bean id="userServices" class="com.gamedesigns.services.DefaultUserServices">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+
+	<bean id="categoryDAO" class="com.gamedesigns.dao.JpaCategoryDAO" />
+
+	<bean id="categoryServices" class="com.gamedesigns.services.DefaultCategoryServices">
+		<property name="categoryDAO" ref="categoryDAO"></property>
+	</bean>
+
+	<bean id="gameTypeDAO" class="com.gamedesigns.dao.JpaGameTypeDAO" />
+
+	<bean id="gameTypeServices" class="com.gamedesigns.services.DefaultGameTypeServices">
+		<property name="gameTypeDAO" ref="gameTypeDAO"></property>
+	</bean>
+
+	<bean id="designDAO" class="com.gamedesigns.dao.JpaDesignDAO" />
+
+	<bean id="designServices" class="com.gamedesigns.services.DefaultDesignServices">
+		<property name="designDAO" ref="designDAO"></property>
+	</bean>
+
+	<bean id="previewDAO" class="com.gamedesigns.dao.JpaPreviewDAO" />
+
+	<bean id="previewServices" class="com.gamedesigns.services.DefaultPreviewServices">
+		<property name="previewDAO" ref="previewDAO"></property>
+	</bean>
+
+	<bean id="validatorDAO" class="com.gamedesigns.dao.validator.JpaValidatorDAO"></bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+
+		<property name="basename" value="/WEB-INF/messages" />
+
+	</bean>
+
+</beans>
