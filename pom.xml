@@ -9,7 +9,7 @@
 	<properties>
 		<spring.version>5.2.4.RELEASE</spring.version>
 		<hibernate.version>4.2.7.Final</hibernate.version>
-		<logback.version>1.1.1</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<jcloverslf4j.version>1.7.6</jcloverslf4j.version>
 		<tomcat.deploy.directory>E:\fortechTraining\apache-tomcat-8.0.28\webapps </tomcat.deploy.directory>
 	</properties>
